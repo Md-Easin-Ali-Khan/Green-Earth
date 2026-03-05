@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Green Earth</title>
+    <link rel="shortcut icon" href="assets/hero-leaf1.png" type="image/x-icon">
 
     <!-- daisy + tailwind -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
@@ -49,6 +50,38 @@
             <img src="assets/hero-leaf2.png" alt="">
         </div>
     </section>
+
+    <!-- main section -->
+    <main class="my-24 w-10/12 mx-auto">
+        <h2 class="text-3xl text-center mb-10">Choose Your Trees</h2>
+        <div class="grid grid-cols-12 gap-7">
+
+            <!-- category area -->
+            <div class="bg-white card col-span-3 card card-body shadow-2xl rounded-md">
+                <h3 class="text-xl font-semibold mb-4">Categories</h3>
+
+                <div class="space-y-3">
+                    <button class="btn w-full justify-start text-lg text-white  font-bold bg-green-800 py-2 outline">All
+                        Trees</button>
+
+                    <div id="category-container" class="space-y-3">
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- trees area -->
+            <div class="bg-red-700 col-span-6">somthing 2</div>
+
+            <!-- cart area -->
+            <div class="bg-sky-700 col-span-3">
+                <h3 class="text-xl font-semibold mb-4 text-black">Your Cart</h3>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
