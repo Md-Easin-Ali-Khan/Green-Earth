@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- daisy + tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <!-- navigation bar -->
+    <header class="flex justify-around py-9 bg-green-700 items-center">
+        <div class="logo">
+            <h2 class="text-4xl text-white font-semibold">Green Earth</h2>
+        </div>
+
+        <!-- nav menu -->
+        <ul class="flex gap-6 text-white font-semibold">
+            <li>About</li>
+            <li>Gallery</li>
+            <li>Plant a Tree</li>
+        </ul>
+
+        <!-- nav button -->
+        <div>
+            <button class="btn btn-warning rounded-[999px] text-lg text-green-900 font-semibold py-3 px-5">Plant a
+                Tree</button>
+        </div>
+    </header>
+
+    <!-- hero section -->
+    <section class="flex justify-between items-center bg-sky-100">
+        <div>
+            <img src="assets/hero-leaf1.png" alt="">
+        </div>
+        <!-- hero content -->
+        <div class="space-y-6 text-center">
+            <h1 class="text-5xl text-gray-700 font-bold">Plant a Tree, Grow a Future</h1>
+            <p class="text-lg">Join our mission to plant 1 million trees and make the Earth greener for future
+                generations.</p>
+            <button class="btn btn-warning rounded-[999px] text-lg text-green-900 font-semibold py-3 px-5">Get
+                Involved</button>
+        </div>
+        <div>
+            <img src="assets/hero-leaf2.png" alt="">
+        </div>
+    </section>
+</body>
+
+</html>
