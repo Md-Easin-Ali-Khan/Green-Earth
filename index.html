@@ -52,9 +52,9 @@
     </section>
 
     <!-- main section -->
-    <main class="my-24 w-10/12 mx-auto">
+    <main class="my-24 w-[95%] mx-auto">
         <h2 class="text-3xl text-center mb-10">Choose Your Trees</h2>
-        <div class="grid grid-cols-12 gap-7">
+        <div class="grid grid-cols-12 gap-5">
 
             <!-- category area -->
             <div class="bg-white card col-span-3 card card-body shadow-2xl rounded-md">
@@ -71,7 +71,15 @@
             </div>
 
             <!-- trees area -->
-            <div class="bg-red-700 col-span-6">somthing 2</div>
+            <div class="col-span-6">
+                <div id="trees-container" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                </div>
+
+                <!-- loading-spinner -->
+                <div id="loading-spinner" class="h-[60vh] flex hidden justify-center items-center">
+                    <span class="loading loading-spinner text-error"></span>
+                </div>
+            </div>
 
             <!-- cart area -->
             <div class="bg-sky-700 col-span-3">
