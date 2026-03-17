@@ -59,9 +59,10 @@
             <!-- category area -->
             <div class="bg-white card col-span-3 card card-body shadow-2xl rounded-md">
                 <h3 class="text-xl font-semibold mb-4">Categories</h3>
-
-                <div class="space-y-3">
-                    <button class="btn w-full justify-start text-lg text-white  font-bold bg-green-800 py-2 outline">All
+                <!-- category button -->
+                <div class="space-y-3 sticky top-3">
+                    <button id="allTreesBtn"
+                        class="btn w-full justify-start text-lg text-white  font-bold bg-green-800 py-2 outline">All
                         Trees</button>
 
                     <div id="category-container" class="space-y-3">
@@ -77,7 +78,7 @@
 
                 <!-- loading-spinner -->
                 <div id="loading-spinner" class="h-[60vh] flex hidden justify-center items-center">
-                    <span class="loading loading-spinner text-error"></span>
+                    <span class="loading loading-bars loading-xl"></span>
                 </div>
             </div>
 
@@ -88,6 +89,17 @@
         </div>
 
     </main>
+    <!-- You can open the modal using ID.showModal() method -->
+    <button class="btn" onclick="my_modal_3.showModal()">open modal</button>
+    <dialog id="my_modal_3" class="modal">
+        <div class="modal-box">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="text-lg font-bold">Hello!</h3>
+            <p class="py-4">Press ESC key or click on ✕ button to close</p>
+        </div>
+    </dialog>
 
     <script src="script.js"></script>
 </body>
