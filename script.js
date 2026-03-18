@@ -1,7 +1,13 @@
 const categoryContainer = document.getElementById("category-container");
 const treesContainer = document.getElementById("trees-container");
 const loadingSpinner = document.getElementById("loading-spinner");
-const allTreesBtn = document.getElementById("allTreesBtn") 
+const allTreesBtn = document.getElementById("allTreesBtn");
+const treeDetailsModal = document.getElementById("tree-details-modal");
+const modalName = document.getElementById("modalName");
+const modalImage = document.getElementById("modalImage");
+const modalCategory = document.getElementById("modalCategory");
+const modalDescription = document.getElementById("modalDescription");
+const modalPrice = document.getElementById("modalPrice")
 
 // showing the loading spinner
 function showLoading() {
@@ -53,7 +59,7 @@ async function selectCatagory(categoryId, btn) {
 }
 
 // select all trees button 
-allTreesBtn.addEventListener("click", ()=>{
+allTreesBtn.addEventListener("click", () => {
     const allBtns = document.querySelectorAll("#category-container button , #allTreesBtn");
 
     allBtns.forEach((button) => {
@@ -94,7 +100,7 @@ function displayTrees(trees) {
                  class="rounded-t-xl h-40 w-full object-cover" />
 
             <div class="card-body p-3">
-                <h2 class="card-title">${tree.name}</h2>
+                <h2 class="card-title" onclick="openTreeModal(${tree.id})">${tree.name}</h2>
 
                 <p class="line-clamp-2">${tree.description}</p>
 
@@ -118,6 +124,19 @@ function displayTrees(trees) {
 
         treesContainer.appendChild(card);
     });
+}
+
+// plant modal
+async function openTreeModal(plantId) {
+    const res = await fetch(`https://openapi.programming-hero.com/api/plant/${plantId}`)
+    const data = await res.json();
+    const modalDetails = data.plants;
+    treeDetailsModal.showModal();
+    modalName.innerText = modalDetails.name;
+    modalImage.src = modalDetails.image;
+    modalCategory.innerText = modalDetails.category;
+    modalDescription.innerText = modalDetails.description;
+    modalPrice.innerText = modalDetails.price;
 }
 
 loadTrees();
