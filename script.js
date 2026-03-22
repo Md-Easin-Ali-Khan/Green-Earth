@@ -7,7 +7,10 @@ const modalName = document.getElementById("modalName");
 const modalImage = document.getElementById("modalImage");
 const modalCategory = document.getElementById("modalCategory");
 const modalDescription = document.getElementById("modalDescription");
-const modalPrice = document.getElementById("modalPrice")
+const modalPrice = document.getElementById("modalPrice");
+const cartContainer = document.getElementById("cart-container");
+
+const cart = []
 
 // showing the loading spinner
 function showLoading() {
@@ -115,8 +118,8 @@ function displayTrees(trees) {
                 </div>
 
                 <div class="card-actions">
-                    <button class="btn btn-primary w-full rounded-4xl">
-                        Buy Now
+                    <button onclick="addToCart('${tree.id}', '${tree.name}', '${tree.price}')" class="btn btn-primary w-full rounded-4xl">
+                        Add to Cart
                     </button>
                 </div>
             </div>
@@ -137,6 +140,43 @@ async function openTreeModal(plantId) {
     modalCategory.innerText = modalDetails.category;
     modalDescription.innerText = modalDetails.description;
     modalPrice.innerText = modalDetails.price;
+}
+
+function addToCart(id, name, price) {
+    console.log(id, price, name)
+    const existingCart = cart.find((item) => { item.id === id })
+    if (existingCart) {
+        existingCart.quantity += 1
+    } else {
+        cart.push({
+            id,
+            price,
+            name,
+            quantity: 1,
+        })
+    }
+    updateCart()
+}
+
+function updateCart() {
+    cartContainer.innerHTML = "";
+    console.log(cart)
+
+    cart.forEach((items) => {
+        const cartItems = document.createElement("div");
+        cartItems.className = "flex justify-between flex-col py-2 px-3";
+        cartItems.innerHTML = `
+                        <div class="flex justify-between">
+                            <div>
+                                <h2 class="font-bold text-sm mb-1">${items.name}</h2>
+                                <p class="text-[16px] text-gray-500">${items.price} x ${items.quantity}</p>
+                            </div>
+                            <button>X</button>
+                        </div>
+                        <p class="mt-4 flex justify-between text-[16px]">Total: <span>৳1000</span></p>
+        `
+        cartContainer.appendChild(cartItems);
+    });
 }
 
 loadTrees();
