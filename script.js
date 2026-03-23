@@ -118,7 +118,7 @@ function displayTrees(trees) {
                 </div>
 
                 <div class="card-actions">
-                    <button onclick="addToCart('${tree.id}', '${tree.name}', '${tree.price}')" class="btn btn-primary w-full rounded-4xl">
+                    <button onclick="addToCart('${tree.id}', '${tree.name}', ${tree.price})" class="btn btn-primary w-full rounded-4xl">
                         Add to Cart
                     </button>
                 </div>
@@ -142,9 +142,10 @@ async function openTreeModal(plantId) {
     modalPrice.innerText = modalDetails.price;
 }
 
+// add to cart
 function addToCart(id, name, price) {
     console.log(id, price, name)
-    const existingCart = cart.find((item) => { item.id === id })
+    const existingCart = cart.find((item) => item.id === id)
     if (existingCart) {
         existingCart.quantity += 1
     } else {
@@ -152,7 +153,7 @@ function addToCart(id, name, price) {
             id,
             price,
             name,
-            quantity: 1,
+            quantity: 1
         })
     }
     updateCart()
@@ -173,7 +174,7 @@ function updateCart() {
                             </div>
                             <button>X</button>
                         </div>
-                        <p class="mt-4 flex justify-between text-[16px]">Total: <span>৳1000</span></p>
+                        <p class="mt-4 flex justify-between text-[16px]">Total: <span>৳${items.price * items.quantity}</span></p>
         `
         cartContainer.appendChild(cartItems);
     });
