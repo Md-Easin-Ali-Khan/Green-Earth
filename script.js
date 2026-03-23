@@ -10,7 +10,7 @@ const modalDescription = document.getElementById("modalDescription");
 const modalPrice = document.getElementById("modalPrice");
 const cartContainer = document.getElementById("cart-container");
 
-const cart = []
+let cart = []
 
 // showing the loading spinner
 function showLoading() {
@@ -144,7 +144,6 @@ async function openTreeModal(plantId) {
 
 // add to cart
 function addToCart(id, name, price) {
-    console.log(id, price, name)
     const existingCart = cart.find((item) => item.id === id)
     if (existingCart) {
         existingCart.quantity += 1
@@ -159,9 +158,9 @@ function addToCart(id, name, price) {
     updateCart()
 }
 
+// dynamic cart
 function updateCart() {
     cartContainer.innerHTML = "";
-    console.log(cart)
 
     cart.forEach((items) => {
         const cartItems = document.createElement("div");
@@ -172,13 +171,21 @@ function updateCart() {
                                 <h2 class="font-bold text-sm mb-1">${items.name}</h2>
                                 <p class="text-[16px] text-gray-500">${items.price} x ${items.quantity}</p>
                             </div>
-                            <button>X</button>
+                            <button onClick="removeCart(${items.id})">X</button>
                         </div>
                         <p class="mt-4 flex justify-between text-[16px]">Total: <span>৳${items.price * items.quantity}</span></p>
         `
         cartContainer.appendChild(cartItems);
     });
 }
+
+// removing cart
+function removeCart(cartId){
+    console.log(cartId);
+    const updatedCartElement = cart.filter((item)=>item.id != cartId);
+    cart = updatedCartElement;
+    updateCart()
+};
 
 loadTrees();
 loadCatagory();
