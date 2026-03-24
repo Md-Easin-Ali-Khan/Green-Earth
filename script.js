@@ -9,6 +9,7 @@ const modalCategory = document.getElementById("modalCategory");
 const modalDescription = document.getElementById("modalDescription");
 const modalPrice = document.getElementById("modalPrice");
 const cartContainer = document.getElementById("cart-container");
+let totalPrice = document.getElementById("total-price")
 
 let cart = []
 
@@ -162,7 +163,9 @@ function addToCart(id, name, price) {
 function updateCart() {
     cartContainer.innerHTML = "";
 
+    let total = 0;
     cart.forEach((items) => {
+        total += items.price *items.quantity;
         const cartItems = document.createElement("div");
         cartItems.className = "flex justify-between flex-col py-2 px-3";
         cartItems.innerHTML = `
@@ -173,10 +176,11 @@ function updateCart() {
                             </div>
                             <button onClick="removeCart(${items.id})">X</button>
                         </div>
-                        <p class="mt-4 flex justify-between text-[16px]">Total: <span>৳${items.price * items.quantity}</span></p>
+                    <p class="mt-4 flex justify-between text-[16px]">${items.price * items.quantity}</p>
         `
         cartContainer.appendChild(cartItems);
     });
+    totalPrice.innerText = total
 }
 
 // removing cart
